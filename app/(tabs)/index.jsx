@@ -10,6 +10,7 @@ import { COLORS } from '../../constants/colors.js';
 import {Ionicons} from '@expo/vector-icons'
 import CategoryFilter from '../../components/CategoryFilter.jsx';
 import RecipeCard from '../../components/RecipeCard.jsx';
+import LoadingSpinner from '../../components/LoadingSpinner.jsx';
 
 const HomeScreen = () => {
 
@@ -84,9 +85,7 @@ const HomeScreen = () => {
     loadData()
   },[])
 
-  useEffect(()=>{
-    // console.log(recipes)
-  },[])
+  if(loading && !refreshing) return <LoadingSpinner message='Loading delicious recipes...' />
 
   return (
     <View style={homeStyles.container}>
